@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option go_package = "github.com/yolkhovyy/golang-grpc-demo/pkg/api";
+
+service VotingService {
+  rpc CreateVoteable(CreateVoteableRequest) returns (CreateVoteableResponse) {}
+  rpc ListVoteables(ListVoteablesRequest) returns (ListVoteablesResponse) {}
+  rpc CastVote(CastVoteRequest) returns (CastVoteResponse) {}
+}
+
+message Voteable {
+  string uuid = 1;
+  string question = 2;
+  repeated string answers = 3;
+}
+
+message CreateVoteableRequest {
+  string question = 1;
+  repeated string answers = 2;
+}
+
+message CreateVoteableResponse {
+  string uuid = 1;
+}
+
+message ListVoteablesRequest {
+  int64 page_size = 1;
+  bytes paging_key = 2;
+ }
+
+message ListVoteablesResponse {
+  repeated Voteable votables = 1;
+  bytes paging_key = 2;
+}
+
+message CastVoteRequest {
+  string uuid = 1;
+  int64 answer_index = 2;
+}
+
+message CastVoteResponse { }

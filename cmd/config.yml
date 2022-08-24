@@ -1,0 +1,40 @@
+# zerolog levels
+# https://github.com/rs/zerolog/blob/d894f123bc5c2a887c95e90218b9410563141d67/log.go#L113
+LogLevel: 1
+
+GRPC:
+  Port: 3000
+  Reflection: true
+
+AWS:
+  Region: us-west-2
+  Id: id
+  Secret: secret
+  Token: token
+
+DB:
+  Host: localhost
+  Port: 8000
+
+Metrics:
+  Host: localhost
+  Port: 2112
+  ShutdownTimeout: 10s
+
+Profiler:
+  Enabled: false
+  Pyroscope:
+    ApplicationName: ggd
+    ServerAddress: http://localhost:4040
+    ProfileTypes:
+      - cpu
+      - "inuse_objects"
+      - "alloc_objects"
+      - "inuse_space"
+      - "alloc_space"
+      - "goroutines"
+      - "mutex_count"
+      - "mutex_duration"
+      - "block_count"
+      - "block_duration"
+
